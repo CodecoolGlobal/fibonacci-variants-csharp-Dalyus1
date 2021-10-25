@@ -7,7 +7,7 @@ namespace Codecool.FibonacciVariants
     {
         public static void Main(string[] args)
         {
-            const int k = 30;
+            const int k = 13;
 
             ResetCounter();
             PrintFibonacci("iteration", k, Iterative(k), AdditionsCounter);

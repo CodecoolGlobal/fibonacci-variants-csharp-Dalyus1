@@ -7,8 +7,7 @@ namespace Codecool.FibonacciVariants
     {
         public static int AdditionsCounter =0;
 
-        public static List<int> Memory = new List<int> { 0, 1 };
-
+        public static int[] Memory = new int[50]; 
         public static void ResetCounter()
         {
             AdditionsCounter = 0;
@@ -42,12 +41,14 @@ namespace Codecool.FibonacciVariants
 
         public static int RecursiveWithMemoization(int n)
         {
-            if(n == 0 || n==1) return n;
-            AdditionsCounter+=1;
-            if (Memory.Contains(n)) return n;
-            int result = RecursiveWithMemoization(n - 1) + RecursiveWithMemoization(n - 2);
-            Memory.Add(result);
-            return result;
+            if(n == 0) return n;
+            if(n == 1 || n == 2) return 1;
+            if(Memory[n] != 0) return Memory[n];
+            AdditionsCounter +=1;
+            //if (Memory.Contains(n)) return n;
+            Memory[n] = RecursiveWithMemoization(n - 1) + RecursiveWithMemoization(n - 2);
+            //Memory.Add(result);
+            return Memory[n];
         }
 
         public static int TailRecursive(int n)
